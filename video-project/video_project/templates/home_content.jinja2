@@ -1,8 +1,34 @@
 {% extends "layout.jinja2" %} 
 
-{% block content%}
+{% block list%}
 <div class="container">
-    <h1>This is the {{project}} Project</h1>
-    <p>I hope it works</p>
+
+    <h1>Create Video</h1>
+
+    <form action="/create_video" method="post">
+
+        <h3>Create Your video</h3>
+
+        <p>Name</p>
+        <input name="name" type="text">
+        <p>Theme</p>
+        <input name="theme" type="text">
+        <br>
+        <input name="form.post" type="submit" value="Create">
+
+    </form>
+
+
+    <h1>Videos List</h1>
+
+    {% for entry in videos %}
+    <div>
+        <h3>Video</h3>
+        <p>{{entry.name}}</p>
+        <p>{{entry.theme}}</p>
+    </div>
+
+    {% endfor %}
 </div>
-{% endblock content %}
+{% endblock list %}
+

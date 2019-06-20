@@ -8,7 +8,7 @@ def main(global_config, **settings):
     config.include('pyramid_jinja2')
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
-    config.add_route('videos', '/videos')
     config.add_route('themes', '/themes')
+    config.add_route('create', '/create_video')
     config.scan()
     return config.make_wsgi_app()
