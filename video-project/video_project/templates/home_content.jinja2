@@ -1,6 +1,6 @@
 {% extends "layout.jinja2" %} 
 
-{% block list%}
+{% block content%}
 <div class="container">
 
     <h1>Create Video</h1>
@@ -15,7 +15,6 @@
         <input name="theme" type="text">
         <br>
         <input name="form.post" type="submit" value="Create">
-
     </form>
 
 
@@ -26,9 +25,24 @@
         <h3>Video</h3>
         <p>{{entry.name}}</p>
         <p>{{entry.theme}}</p>
+        <p>{{entry.thumbs_up}}</p>
+        <p>{{entry.thumbs_down}}</p>
+        <form method="post">
+
+            <input type="hidden" name="name" value={{entry.name}}>
+            <input type="hidden" name="action" value="1">
+            <input type="submit" value="Thumbs Up">
+        </form>
+
+        <form method="post">
+
+            <input type="hidden" name="name" value={{entry.name}}>
+            <input type="hidden" name="action" value="2">
+            <input type="submit" value="Thumbs Down">
+        </form>
     </div>
 
     {% endfor %}
 </div>
-{% endblock list %}
+{% endblock content %}
 
