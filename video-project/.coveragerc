@@ -1,0 +1,3 @@
+[run]
+source = video_project
+omit = video_project/test*
