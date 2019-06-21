@@ -58,8 +58,39 @@ class Database(object):
 
         return {"response": "video created"}
 
-    def create_theme_ranking(self):
-        pass
+    def get_theme_ranking(self):
+
+        theme_score = {}
+        ordened_theme_score = {}
+        object_list = []
+        for video in self.collection.find():
+
+            if video["theme"] not in theme_score:
+
+                theme_score[video["theme"]] = video["score"]
+
+            else:
+
+                theme_score[video["theme"]] += video["score"]
+
+        for theme in sorted(theme_score, key=theme_score.get, reverse=True):
+
+            ordened_theme_score[theme] = theme_score[theme]
+
+        for key in ordened_theme_score:
+
+            temp_dict = {"theme": key, "score": ordened_theme_score[key]}
+            object_list.append(temp_dict)
+
+        output = {"ranking": object_list}
+
+        return output
+
+
+
+
+
+
 
 
 db = Database()
@@ -87,7 +118,9 @@ def home(request):
 @view_config(route_name='themes', renderer='templates/themes_content.jinja2')
 def themes(request):
 
-    return {}
+    ranking = db.get_theme_ranking()
+
+    return ranking
 
 
 @view_config(route_name='create', renderer='json')

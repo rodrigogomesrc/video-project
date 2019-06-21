@@ -5,7 +5,14 @@
     <h1>Themes</h1>
     <h3>List of video themes</h3>
 
-    <button><a href="?action=1">Thumbs up</a></button>
+    {% for entry in ranking %}
+
+    <div>
+        <h3>{{entry.theme}}</h3>
+        <p>{{entry.score}}</p>
+    </div>
+
+    {% endfor %}
 </div>
 
 
