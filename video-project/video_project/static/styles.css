@@ -1,12 +1,49 @@
-@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
+nav{
 
-.nav{
-
-    padding: 40px;
-    margin-bottom: 40px;
-    height: 70px;
-    background-color: #113977;
-    color: white;
+	background-color: #113977;
+	min-height: 75px;
 }
 
+
+.nav_link{
+
+	position: relative;
+	float: left;
+	padding: 20px;
+	color: white;
+	font-color: white;
+}
+
+.thumbs{
+
+    margin-bottom: 10px;
+}
+.card{
+
+    margin-bottom: 15px;
+}
+
+a:link{
+
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+
+    text-decoration: none;
+}
+
+.nav_link:hover {
+
+	background-color: #4cb1ef;
+	font-weight: bold;
+	color: white;
+}
+
+.titles {
+
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
 

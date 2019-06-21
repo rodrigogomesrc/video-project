@@ -3,44 +3,50 @@
 {% block content%}
 <div class="container">
 
-    <h1>Create Video</h1>
+    <h3 class="titles">Create Your video</h3>
 
-    <form action="/create_video" method="post">
+    <form  action="/create_video" method="post">
+        <div class="form-group">
+            <label for="name">Title</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter the title of your video">
+        </div>
+        <div class="form-group">
+            <label for="theme">Theme</label>
+            <input type="text" class="form-control" id="theme" name="theme" placeholder="Enter the name of the theme">
+        </div>
 
-        <h3>Create Your video</h3>
-
-        <p>Name</p>
-        <input name="name" type="text">
-        <p>Theme</p>
-        <input name="theme" type="text">
-        <br>
-        <input name="form.post" type="submit" value="Create">
+        <button type="submit" class="btn btn-primary" name="form.post" type="submit" value="Create">Submit</button>
     </form>
 
-
-    <h1>Videos List</h1>
+    <h3 class="titles">Videos List</h3>
 
     {% for entry in videos %}
-    <div>
-        <h3>Video</h3>
-        <p>{{entry.name}}</p>
-        <p>{{entry.theme}}</p>
-        <p>{{entry.thumbs_up}}</p>
-        <p>{{entry.thumbs_down}}</p>
-        <form method="post">
 
-            <input type="hidden" name="name" value={{entry.name}}>
-            <input type="hidden" name="action" value="1">
-            <input type="submit" value="Thumbs Up">
-        </form>
 
-        <form method="post">
+    <div class="card" style="width: 800px">
+        <img class="card-img-top" src="/static/video.png">
+        <div class="card-body">
+            <h4 class="card-title">{{entry.name}}</h4>
+            <p class="card-text">Theme: {{entry.theme}}</p>
+            <p class="card-text">Likes: {{entry.thumbs_up}}</p>
+            <p class="card-text">Dislikes: {{entry.thumbs_down}}</p>
+            <form method="post">
 
-            <input type="hidden" name="name" value={{entry.name}}>
-            <input type="hidden" name="action" value="2">
-            <input type="submit" value="Thumbs Down">
-        </form>
+                <input type="hidden" name="name" value={{entry.name}}>
+                <input type="hidden" name="action" value="1">
+                <input type="submit" value="Thumbs Up" class="btn btn-primary thumbs">
+            </form>
+
+            <form method="post">
+
+                <input type="hidden" name="name" value={{entry.name}}>
+                <input type="hidden" name="action" value="2">
+                <input type="submit" value="Thumbs Down" class="btn btn-primary thumbs">
+            </form>
+
+        </div>
     </div>
+
 
     {% endfor %}
 </div>

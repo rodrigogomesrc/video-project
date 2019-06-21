@@ -2,14 +2,17 @@
 
 {% block content%}
 <div class="container">
-    <h1>Themes</h1>
-    <h3>List of video themes</h3>
+
+    <h3 class="titles">Ranking of Themes</h3>
 
     {% for entry in ranking %}
 
-    <div>
-        <h3>{{entry.theme}}</h3>
-        <p>{{entry.score}}</p>
+
+    <div class="card" style="width: 800px">
+        <div class="card-body">
+            <h4 class="card-title"> Theme: {{entry.theme}}</h4>
+            <p class="card-text"> Score: {{entry.score}}</p>
+        </div>
     </div>
 
     {% endfor %}
